@@ -164,6 +164,30 @@ private:
   const double x_end1_ = x_start_+length_;
   const double x_end2_ = x_start_+2*length_;
 };
+/**
+ * @brief Terrain with two rails going across a gap
+ */
+class Rails : public HeightMap {
+public:
+  // double GetHeight(double x, double y)  const override { return height_; };
+  double GetHeight(double x, double y) const override;
+  // double GetHeightDerivWrtY(double x, double y) const override;
+private:
+  double height_ = 0.0; // [m]
+  const double rail_height    = 0.1;
+  const double rail_length    = 1;
+  const double dist_bw_rails  = 0.29; //nominal y = 0.29 (should be 2 times this)
+  const double rail_width     = 0.4;
+  const double gap_height     = -100.0;
+
+  const double x_start        = 0.8;
+  const double y_start_1      = -0.5; // distance to start of 1st rail from center at z=0
+  const double y_end_1        = y_start_1 + rail_width;
+  const double y_start_2      = y_end_1 + dist_bw_rails; // distance to start of 2nd rail from center at z=0
+  const double y_end_2        = y_start_2 + rail_width;
+  const double x_end          = rail_length+x_start;
+  
+};
 
 /** @}*/
 

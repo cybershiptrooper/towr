@@ -210,4 +210,15 @@ ChimneyLR::GetHeightDerivWrtY (double x, double y) const
   return dzdy;
 }
 
+double Rails::GetHeight (double x, double y) const 
+{
+  if(x >= x_start && x<=x_end){
+    if ( (y >= y_start_1 && y<= y_end_1) || (y >= y_start_2 && y<= y_end_2) ) 
+      return rail_height;
+    return gap_height;
+  } 
+  return 0.0;
+
+}
+
 } /* namespace towr */
